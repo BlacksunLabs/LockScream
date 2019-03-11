@@ -19,24 +19,64 @@
 
 import Cocoa
 
+/// Main ViewController, displays fake lock screen
 class ViewController: NSViewController, NSTextFieldDelegate {
+    /// Full username of current user with console session
     var user = GetCurrentUser()
+    
+    /// URL to the user-defined wallpaper applied to the main desktop
     var wallpaper = GetWallpaperFromMainDesktop()
     
+    /// Text field holding masked input of user password
     @IBOutlet weak var passwordCell: NSSecureTextFieldCell!
+    
+    /// NSImageView holding the current user's login avatar
     @IBOutlet weak var profileImage: NSImageView!
+    
+    /// Label which holds current user's full name
     @IBOutlet weak var usernameLabel: NSTextField!
+    
+    /// Text field for `passwordCell`
     @IBOutlet weak var passwordField: NSSecureTextField!
+    
+    /// `profileImage`'s cell
     @IBOutlet weak var profileImageCell: NSImageCell!
+    
+    /// View which contains user's wallpaper
     @IBOutlet weak var backgroundBox: NSBox!
+    
+    /// Wraps `passwordField`. UI Hack to allow creating a rounded bezel with background color rendering
     @IBOutlet weak var passwordBox: NSView!
+    
+    /// Button with right facing arrow used to submit `passwordField` on click
     @IBOutlet weak var arrowButton: NSButton!
     
+    /**
+     Deletes the value of `passwordCell` and launches screensaver
+     
+     - Parameters:
+        - sender: NSButton caller
+     
+     - Returns:
+        - None
+    */
     @IBAction func cancelButtonClicked(_ sender: NSButton) {
         self.passwordCell.stringValue = ""
         launchScreenSaver()
     }
     
+    /**
+     Intercepts `passwordField` submission.
+     
+     Validates submitted password is valid for user. If the password is valid further processing continues, otherwise do nothing.
+     
+     TODO: Implement another method for outputting password
+     - Parameters:
+        - None
+     
+     - Returns:
+        - None
+     */
     @IBAction func passwordFieldSubmitted(_ sender: Any) {
         let password = passwordCell.stringValue
         if ValidatePassword(password: password) {
@@ -61,7 +101,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         passwordBox.layer?.cornerRadius = 5
         passwordBox.layer?.masksToBounds = true
         passwordBox.layer?.backgroundColor = NSColor.keyboardFocusIndicatorColor.cgColor
-        let placeholderString = NSAttributedString.init(string: "Enter Password", attributes: [NSAttributedString.Key.foregroundColor: NSColor.secondarySelectedControlColor, NSAttributedString.Key.font: NSFont.systemFont(ofSize: 12)])
+        let placeholderString = NSAttributedString.init(string: "Enter Password", attributes: [NSAttributedString.Key.foregroundColor: NSColor.controlTextColor, NSAttributedString.Key.font: NSFont.systemFont(ofSize: 12)])
         passwordCell.placeholderAttributedString = placeholderString
         
         let image = NSImage.init(contentsOfFile: wallpaper.path)
@@ -80,6 +120,13 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     }
 
     override func viewDidAppear() {
+        /**
+         Struct containing options for presentation of the view.
+         
+         In this case the **dock**, **menu bar**, **apple menu**, **toolbar**, and **"hide"** menu item are disabled.
+         
+         Additionaly the **⌘⌥⎋**, **⌘⇥**, and `Power/Restart/Shut Down/Log Out` hotkeys are disabled.
+         */
         let presOptions: NSApplication.PresentationOptions = [
             .disableForceQuit ,            // Cmd+Opt+Esc panel is disabled
             .hideDock ,                         //Dock is entirely unavailable. Spotlight menu is disabled.
@@ -102,6 +149,14 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         }
     }
     
+    /**
+     Monitors change to `passwordField` adding `arrowButton` when length of input > 0
+     
+     - Parameter obj: Object which sent Notification
+     
+     - Preconditon: obj.object.stringValue.count must be larger than 0
+     
+     */
     func controlTextDidChange(_ obj: Notification) {
         let textField = obj.object as! NSTextField
         if textField.stringValue.count < 1 {
