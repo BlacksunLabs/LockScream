@@ -22,8 +22,14 @@ import Foundation
 import Collaboration
 import AppKit
 
+/// Extends NSImage methods
 extension NSImage {
-    // Turns NSImage into a circular masked copy of itself
+    /**
+     Turns NSImage into a circular masked copy of itself.
+     
+     - Returns
+        - NSImage
+     */
     func oval() -> NSImage {
         let image = NSImage(size: size)
         image.lockFocus()
@@ -38,6 +44,12 @@ extension NSImage {
     }
 }
 
+/**
+ Gets an object containing information about the current user
+ 
+ - Returns:
+    - CBIdentity of current user
+ */
 func GetCurrentUser() -> CBIdentity {
     let qcu = CSIdentityQueryCreateForCurrentUser(kCFAllocatorDefault)?.takeRetainedValue()
     let flags = CSIdentityQueryFlags(kCSIdentityQueryGenerateUpdateEvents)
@@ -53,6 +65,14 @@ func GetCurrentUser() -> CBIdentity {
     return CBIdentity(name: name, authority: .local())!
 }
 
+/**
+ Validates password against Core Service's Identity Service.
+ 
+ - Parameters:
+    - password: String containing password to test
+ - Returns:
+    - bool: True if valid password.
+ */
 func ValidatePassword(password: String) -> Bool {
     let qcu = CSIdentityQueryCreateForCurrentUser(kCFAllocatorDefault)?.takeRetainedValue()
     let flags = CSIdentityQueryFlags(kCSIdentityQueryGenerateUpdateEvents)
@@ -64,18 +84,29 @@ func ValidatePassword(password: String) -> Bool {
     let identity = rawIdentity?.first
     let userIdentity = CBUserIdentity.init(posixUID: CSIdentityGetPosixID(identity), authority: .local())
     
-    print("User POSIX Name:\(userIdentity!.posixName)")
-    print("User POSIX ID:\(userIdentity!.posixUID)")
     return userIdentity!.authenticate(withPassword: password)
 }
 
+/**
+ Gets wallpaper of main desktop
+ 
+ - Returns:
+    - wallpaperURL: URL to image set as main desktop's wallpaper
+ */
 func GetWallpaperFromMainDesktop() -> URL {
     let MainScreen = NSScreen.main
     let wallpaperURL = NSWorkspace.shared.desktopImageURL(for: MainScreen!)
     return wallpaperURL!
 }
 
-
+/**
+ Launches screensaver.
+ 
+ Bypasses triggering real lock screen by utilizing the `ScreenSaverPreview` application normally reserved for preference panels.
+ 
+ - Returns:
+    - None
+ */
 func launchScreenSaver() {
     // Found the this path while poking at the Desktop and Wallpaper prefpanes.
     let _ = Process.launchedProcess(launchPath: "/System/Library/PreferencePanes/DesktopScreenEffectsPref.prefPane/Contents/Resources/ScreenEffects.prefPane/Contents/Resources/ScreenSaverPreview.app/Contents/MacOS/ScreenSaverPreview", arguments: [""])
