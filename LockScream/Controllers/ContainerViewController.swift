@@ -19,13 +19,21 @@
 
 import Cocoa
 
+/**
+ View holding child views.
+ 
+ Primarily used as hinge when switching between views.
+ */
 class ContainerViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /// Main storyboard of this project
         let mainStoryboard: NSStoryboard = NSStoryboard(name: "Main", bundle: nil)
+        /// NSViewController of the primary view. Holds the lock screen
         let lockViewController = mainStoryboard.instantiateController(withIdentifier: "lockViewController") as! NSViewController
+        
         self.insertChild(lockViewController, at: 0)
     
         self.view.addSubview(lockViewController.view)
