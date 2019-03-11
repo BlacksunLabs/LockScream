@@ -44,6 +44,42 @@ extension NSImage {
     }
 }
 
+/// Extends NSView
+extension NSView {
+    /**
+     Shakes a view indicating invalid input
+     
+     - Parameters:
+        - intensity: Force multiplier for animation
+        - duration: Duration of shake animation
+     - Returns:
+        - None
+     */
+    func shake(with intensity : CGFloat = 0.05, duration : Double = 0.5 ){
+        let numberOfShakes = 3
+        let frame : CGRect = (self.frame)
+        let shakeAnimation :CAKeyframeAnimation  = CAKeyframeAnimation()
+        
+        let shakePath = CGMutablePath()
+        shakePath.move( to: CGPoint(x:NSMinX(frame), y:NSMinY(frame)))
+        
+        for _ in 0...numberOfShakes-1 {
+            shakePath.addLine(to: CGPoint(x:NSMinX(frame) - frame.size.width * intensity, y:NSMinY(frame)))
+            shakePath.addLine(to: CGPoint(x:NSMinX(frame) + frame.size.width * intensity, y:NSMinY(frame)))
+        }
+        
+        shakePath.closeSubpath()
+        shakeAnimation.path = shakePath
+        shakeAnimation.duration = duration
+        
+        let animations = [NSAnimatablePropertyKey("frameOrigin") : shakeAnimation]
+        
+        self.animations = animations
+        self.animator().setFrameOrigin(NSPoint(x: frame.minX, y: 0))
+        shakeAnimation.path = shakePath
+    }
+}
+
 /**
  Gets an object containing information about the current user
  
