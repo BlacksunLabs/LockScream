@@ -78,5 +78,5 @@ func GetWallpaperFromMainDesktop() -> URL {
 
 func launchScreenSaver() {
     // Found the this path while poking at the Desktop and Wallpaper prefpanes.
-    NSWorkspace.shared.open(URL(fileURLWithPath:"/System/Library/PreferencePanes/DesktopScreenEffectsPref.prefPane/Contents/Resources/ScreenEffects.prefPane/Contents/Resources/ScreenSaverPreview.app/Contents/MacOS/ScreenSaverPreview"))
+    let _ = Process.launchedProcess(launchPath: "/System/Library/PreferencePanes/DesktopScreenEffectsPref.prefPane/Contents/Resources/ScreenEffects.prefPane/Contents/Resources/ScreenSaverPreview.app/Contents/MacOS/ScreenSaverPreview", arguments: [""])
 }
