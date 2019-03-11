@@ -19,24 +19,64 @@
 
 import Cocoa
 
+/// Main ViewController, displays fake lock screen
 class ViewController: NSViewController, NSTextFieldDelegate {
+    /// Full username of current user with console session
     var user = GetCurrentUser()
+    
+    /// URL to the user-defined wallpaper applied to the main desktop
     var wallpaper = GetWallpaperFromMainDesktop()
     
+    /// Text field holding masked input of user password
     @IBOutlet weak var passwordCell: NSSecureTextFieldCell!
+    
+    /// NSImageView holding the current user's login avatar
     @IBOutlet weak var profileImage: NSImageView!
+    
+    /// Label which holds current user's full name
     @IBOutlet weak var usernameLabel: NSTextField!
+    
+    /// Text field for `passwordCell`
     @IBOutlet weak var passwordField: NSSecureTextField!
+    
+    /// `profileImage`'s cell
     @IBOutlet weak var profileImageCell: NSImageCell!
+    
+    /// View which contains user's wallpaper
     @IBOutlet weak var backgroundBox: NSBox!
+    
+    /// Wraps `passwordField`. UI Hack to allow creating a rounded bezel with background color rendering
     @IBOutlet weak var passwordBox: NSView!
+    
+    /// Button with right facing arrow used to submit `passwordField` on click
     @IBOutlet weak var arrowButton: NSButton!
     
+    /**
+     Deletes the value of `passwordCell` and launches screensaver
+     
+     - Parameters:
+        - sender: NSButton caller
+     
+     - Returns:
+        - None
+    */
     @IBAction func cancelButtonClicked(_ sender: NSButton) {
         self.passwordCell.stringValue = ""
         launchScreenSaver()
     }
     
+    /**
+     Intercepts `passwordField` submission.
+     
+     Validates submitted password is valid for user. If the password is valid further processing continues, otherwise do nothing.
+     
+     TODO: Implement another method for outputting password
+     - Parameters:
+        - None
+     
+     - Returns:
+        - None
+     */
     @IBAction func passwordFieldSubmitted(_ sender: Any) {
         let password = passwordCell.stringValue
         if ValidatePassword(password: password) {
@@ -61,7 +101,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         passwordBox.layer?.cornerRadius = 5
         passwordBox.layer?.masksToBounds = true
         passwordBox.layer?.backgroundColor = NSColor.keyboardFocusIndicatorColor.cgColor
-        let placeholderString = NSAttributedString.init(string: "Enter Password", attributes: [NSAttributedString.Key.foregroundColor: NSColor.secondarySelectedControlColor, NSAttributedString.Key.font: NSFont.systemFont(ofSize: 12)])
+        let placeholderString = NSAttributedString.init(string: "Enter Password", attributes: [NSAttributedString.Key.foregroundColor: NSColor.controlTextColor, NSAttributedString.Key.font: NSFont.systemFont(ofSize: 12)])
         passwordCell.placeholderAttributedString = placeholderString
         
         let image = NSImage.init(contentsOfFile: wallpaper.path)
