@@ -186,84 +186,97 @@ Gw
                                                     </constraints>
                                                     <imageCell key="cell" scrollable="YES" lineBreakMode="clipping" truncatesLastVisibleLine="YES" refusesFirstResponder="YES" focusRingType="none" alignment="left" imageScaling="proportionallyUpOrDown" id="wwt-RH-yc7" colorLabel="IBBuiltInLabel-Purple"/>
                                                 </imageView>
-                                                <customView focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="aY9-JW-TZt">
-                                                    <rect key="frame" x="20" y="44" width="172" height="31"/>
-                                                    <subviews>
-                                                        <secureTextField autoresizesSubviews="NO" wantsLayer="YES" focusRingType="none" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghw-aC-30x" colorLabel="IBBuiltInLabel-Orange">
-                                                            <rect key="frame" x="2" y="7" width="168" height="16"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                            <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" focusRingType="none" allowsEditingTextAttributes="YES" id="dAj-El-M0q">
-                                                                <font key="font" metaFont="cellTitle"/>
-                                                                <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.61960784313725492" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <allowedInputSourceLocales>
-                                                                    <string>NSAllRomanInputSourcesLocaleIdentifier</string>
-                                                                </allowedInputSourceLocales>
-                                                            </secureTextFieldCell>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="string" keyPath="delegate" value="self"/>
-                                                            </userDefinedRuntimeAttributes>
-                                                            <connections>
-                                                                <action selector="passwordFieldSubmitted:" target="XfG-lQ-9wD" id="LRP-Kb-HRZ"/>
-                                                            </connections>
-                                                        </secureTextField>
-                                                    </subviews>
-                                                </customView>
                                                 <textField autoresizesSubviews="NO" wantsLayer="YES" focusRingType="none" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zb0-IY-UCx" colorLabel="IBBuiltInLabel-Yellow">
-                                                    <rect key="frame" x="69" y="88" width="73" height="23"/>
+                                                    <rect key="frame" x="69" y="94" width="73" height="17"/>
                                                     <textFieldCell key="cell" allowsUndo="NO" focusRingType="none" alignment="center" title="Username" allowsEditingTextAttributes="YES" id="zdj-7u-94F" colorLabel="IBBuiltInLabel-Yellow">
                                                         <font key="font" metaFont="systemSemibold" size="13"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
+                                                <box autoresizesSubviews="NO" borderType="none" title="PasswordWrapperBox" titlePosition="noTitle" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ceg-0u-MUk">
+                                                    <rect key="frame" x="-3" y="44" width="218" height="66"/>
+                                                    <view key="contentView" id="izk-4u-yet">
+                                                        <rect key="frame" x="0.0" y="0.0" width="218" height="66"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <subviews>
+                                                            <customView focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aY9-JW-TZt">
+                                                                <rect key="frame" x="20" y="15" width="172" height="31"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                <subviews>
+                                                                    <secureTextField autoresizesSubviews="NO" wantsLayer="YES" focusRingType="none" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghw-aC-30x" colorLabel="IBBuiltInLabel-Orange">
+                                                                        <rect key="frame" x="2" y="7" width="168" height="16"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" focusRingType="none" allowsEditingTextAttributes="YES" id="dAj-El-M0q">
+                                                                            <font key="font" metaFont="cellTitle"/>
+                                                                            <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.61960784313725492" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <allowedInputSourceLocales>
+                                                                                <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                                            </allowedInputSourceLocales>
+                                                                        </secureTextFieldCell>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="string" keyPath="delegate" value="self"/>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <action selector="passwordFieldSubmitted:" target="XfG-lQ-9wD" id="LRP-Kb-HRZ"/>
+                                                                        </connections>
+                                                                    </secureTextField>
+                                                                </subviews>
+                                                            </customView>
+                                                            <button hidden="YES" autoresizesSubviews="NO" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8tX-ac-BAM">
+                                                                <rect key="frame" x="191" y="20" width="21" height="21"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="21" id="9lB-TS-zaG"/>
+                                                                    <constraint firstAttribute="width" constant="21" id="Pvt-0I-kVh"/>
+                                                                </constraints>
+                                                                <contentFilters>
+                                                                    <ciFilter name="CIFalseColor">
+                                                                        <configuration>
+                                                                            <ciColor key="inputColor0" red="0.89009666442871094" green="0.89009666442871094" blue="0.89009666442871094" alpha="1"/>
+                                                                            <ciColor key="inputColor1" red="0.92779582738876343" green="0.92779582738876343" blue="0.92779582738876343" alpha="1"/>
+                                                                            <null key="inputImage"/>
+                                                                        </configuration>
+                                                                    </ciFilter>
+                                                                </contentFilters>
+                                                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="NSFollowLinkFreestandingTemplate" imagePosition="only" alignment="center" state="on" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="RjA-XU-V9j">
+                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                                                </buttonCell>
+                                                                <color key="contentTintColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="8tX-ac-BAM" secondAttribute="bottom" constant="20" id="BRh-o8-EW2"/>
+                                                            <constraint firstItem="8tX-ac-BAM" firstAttribute="leading" secondItem="izk-4u-yet" secondAttribute="leading" constant="191" id="HUy-ff-YOn"/>
+                                                        </constraints>
+                                                    </view>
+                                                </box>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="Ceg-0u-MUk" firstAttribute="top" secondItem="6KZ-X1-8ca" secondAttribute="top" constant="92" id="2Mm-Vi-j5a"/>
                                                 <constraint firstItem="Zb0-IY-UCx" firstAttribute="leading" secondItem="6KZ-X1-8ca" secondAttribute="leading" constant="71" id="7st-QR-SDC"/>
-                                                <constraint firstAttribute="trailing" secondItem="aY9-JW-TZt" secondAttribute="trailing" constant="20" id="AGk-om-gUr"/>
-                                                <constraint firstItem="aY9-JW-TZt" firstAttribute="leading" secondItem="6KZ-X1-8ca" secondAttribute="leading" constant="20" id="Bx2-HI-Gf5"/>
-                                                <constraint firstItem="aY9-JW-TZt" firstAttribute="top" secondItem="Zb0-IY-UCx" secondAttribute="bottom" constant="13" id="QZd-PX-fqy"/>
-                                                <constraint firstItem="aY9-JW-TZt" firstAttribute="top" secondItem="6KZ-X1-8ca" secondAttribute="top" constant="125" id="S3D-9G-r3H"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ceg-0u-MUk" secondAttribute="trailing" id="JGD-4p-axb"/>
                                                 <constraint firstAttribute="bottom" secondItem="bpJ-GX-hNR" secondAttribute="bottom" constant="116" id="YoQ-xZ-G2u"/>
+                                                <constraint firstItem="Ceg-0u-MUk" firstAttribute="leading" secondItem="6KZ-X1-8ca" secondAttribute="leading" id="aLP-TV-L2e"/>
                                                 <constraint firstItem="bpJ-GX-hNR" firstAttribute="top" secondItem="6KZ-X1-8ca" secondAttribute="top" constant="20" id="c5T-mh-GKL"/>
-                                                <constraint firstAttribute="bottom" secondItem="aY9-JW-TZt" secondAttribute="bottom" constant="44" id="cDw-ir-SFc"/>
                                                 <constraint firstAttribute="trailing" secondItem="Zb0-IY-UCx" secondAttribute="trailing" constant="72" id="oD8-3B-yQJ"/>
                                                 <constraint firstItem="bpJ-GX-hNR" firstAttribute="leading" secondItem="6KZ-X1-8ca" secondAttribute="leading" constant="71" id="oNh-oX-S2W"/>
                                                 <constraint firstAttribute="trailing" secondItem="bpJ-GX-hNR" secondAttribute="trailing" constant="77" id="p8Y-rb-dvG"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ceg-0u-MUk" secondAttribute="bottom" constant="48" id="tbH-R8-TBA"/>
                                                 <constraint firstItem="Zb0-IY-UCx" firstAttribute="top" secondItem="bpJ-GX-hNR" secondAttribute="bottom" constant="5" id="tvU-pC-JxN"/>
                                             </constraints>
                                         </customView>
-                                        <button hidden="YES" autoresizesSubviews="NO" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8tX-ac-BAM">
-                                            <rect key="frame" x="629" y="311" width="21" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="9lB-TS-zaG"/>
-                                                <constraint firstAttribute="width" constant="21" id="Pvt-0I-kVh"/>
-                                            </constraints>
-                                            <contentFilters>
-                                                <ciFilter name="CIFalseColor">
-                                                    <configuration>
-                                                        <ciColor key="inputColor0" red="0.89009666442871094" green="0.89009666442871094" blue="0.89009666442871094" alpha="1"/>
-                                                        <ciColor key="inputColor1" red="0.92779582738876343" green="0.92779582738876343" blue="0.92779582738876343" alpha="1"/>
-                                                        <null key="inputImage"/>
-                                                    </configuration>
-                                                </ciFilter>
-                                            </contentFilters>
-                                            <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="NSFollowLinkFreestandingTemplate" imagePosition="only" alignment="center" state="on" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="RjA-XU-V9j">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                                <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                                            </buttonCell>
-                                            <color key="contentTintColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="6KZ-X1-8ca" secondAttribute="trailing" constant="434" id="76A-VP-Fry"/>
                                         <constraint firstItem="6KZ-X1-8ca" firstAttribute="leading" secondItem="PHg-EJ-fn0" secondAttribute="leading" constant="434" id="HVW-On-ilX"/>
-                                        <constraint firstAttribute="trailing" secondItem="8tX-ac-BAM" secondAttribute="trailing" constant="430" id="RxC-FD-zZ7"/>
-                                        <constraint firstAttribute="bottom" secondItem="8tX-ac-BAM" secondAttribute="bottom" constant="311" id="Yqn-gJ-TSb"/>
+                                        <constraint firstAttribute="trailing" secondItem="6KZ-X1-8ca" secondAttribute="trailing" constant="434" id="Nra-cS-geh"/>
                                         <constraint firstItem="6KZ-X1-8ca" firstAttribute="top" secondItem="PHg-EJ-fn0" secondAttribute="top" constant="262" id="Zc8-2f-5zB"/>
                                         <constraint firstItem="6KZ-X1-8ca" firstAttribute="centerX" secondItem="PHg-EJ-fn0" secondAttribute="centerX" id="ex0-se-eSH"/>
+                                        <constraint firstItem="6KZ-X1-8ca" firstAttribute="leading" secondItem="PHg-EJ-fn0" secondAttribute="leading" constant="434" id="k4w-C0-Bq0"/>
                                     </constraints>
                                     <backgroundFilters>
                                         <ciFilter name="CIGaussianBlur">
@@ -289,6 +302,7 @@ DQ
                         <outlet property="passwordBox" destination="aY9-JW-TZt" id="3Qn-iW-ktq"/>
                         <outlet property="passwordCell" destination="dAj-El-M0q" id="Ldy-w9-iHn"/>
                         <outlet property="passwordField" destination="ghw-aC-30x" id="TVm-Be-Sq3"/>
+                        <outlet property="passwordWrapperBox" destination="Ceg-0u-MUk" id="zUT-fm-C25"/>
                         <outlet property="profileImage" destination="bpJ-GX-hNR" id="tLe-cD-x6b"/>
                         <outlet property="profileImageCell" destination="wwt-RH-yc7" id="0h0-1U-Eg9"/>
                         <outlet property="usernameLabel" destination="Zb0-IY-UCx" id="k6u-Q6-LDS"/>
