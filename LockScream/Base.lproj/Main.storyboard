@@ -137,7 +137,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <beginningViews>
                                                 <button autoresizesSubviews="NO" focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PSx-VP-fGv">
-                                                    <rect key="frame" x="2" y="20" width="32" height="51"/>
+                                                    <rect key="frame" x="0.0" y="20" width="34" height="51"/>
                                                     <contentFilters>
                                                         <ciFilter name="CIColorInvert">
                                                             <configuration>
@@ -154,8 +154,7 @@ Gw
                                                     </buttonCell>
                                                     <color key="contentTintColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     <connections>
-                                                        <action selector="cancelButtonClicked:" target="XfG-lQ-9wD" id="enV-UR-6dv"/>
-                                                        <segue destination="rW0-yQ-BgG" kind="show" identifier="lock2Blank" id="AT3-C3-jMf"/>
+                                                        <action selector="cancelButtonClicked:" target="XfG-lQ-9wD" id="Nju-Zm-WW6"/>
                                                     </connections>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aau-In-Nv1">
@@ -213,7 +212,7 @@ Gw
                                                     <rect key="frame" x="69" y="88" width="73" height="23"/>
                                                     <textFieldCell key="cell" allowsUndo="NO" focusRingType="none" alignment="center" title="Username" allowsEditingTextAttributes="YES" id="zdj-7u-94F" colorLabel="IBBuiltInLabel-Yellow">
                                                         <font key="font" metaFont="systemSemibold" size="13"/>
-                                                        <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
@@ -305,7 +304,6 @@ DQ
         <image name="NSStopProgressFreestandingTemplate" width="14" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NfW-uR-geh"/>
         <segue reference="76p-Ry-AP3"/>
     </inferredMetricsTieBreakers>
 </document>
