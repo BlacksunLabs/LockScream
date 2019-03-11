@@ -32,6 +32,11 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     @IBOutlet weak var passwordBox: NSView!
     @IBOutlet weak var arrowButton: NSButton!
     
+    @IBAction func cancelButtonClicked(_ sender: NSButton) {
+        self.passwordCell.stringValue = ""
+        launchScreenSaver()
+    }
+    
     @IBAction func passwordFieldSubmitted(_ sender: Any) {
         let password = passwordCell.stringValue
         if ValidatePassword(password: password) {
