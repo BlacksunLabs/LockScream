@@ -120,6 +120,13 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     }
 
     override func viewDidAppear() {
+        /**
+         Struct containing options for presentation of the view.
+         
+         In this case the **dock**, **menu bar**, **apple menu**, **toolbar**, and **"hide"** menu item are disabled.
+         
+         Additionaly the **⌘⌥⎋**, **⌘⇥**, and `Power/Restart/Shut Down/Log Out` hotkeys are disabled.
+         */
         let presOptions: NSApplication.PresentationOptions = [
             .disableForceQuit ,            // Cmd+Opt+Esc panel is disabled
             .hideDock ,                         //Dock is entirely unavailable. Spotlight menu is disabled.
@@ -142,6 +149,14 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         }
     }
     
+    /**
+     Monitors change to `passwordField` adding `arrowButton` when length of input > 0
+     
+     - Parameter obj: Object which sent Notification
+     
+     - Preconditon: obj.object.stringValue.count must be larger than 0
+     
+     */
     func controlTextDidChange(_ obj: Notification) {
         let textField = obj.object as! NSTextField
         if textField.stringValue.count < 1 {
