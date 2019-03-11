@@ -27,6 +27,9 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     /// URL to the user-defined wallpaper applied to the main desktop
     var wallpaper = GetWallpaperFromMainDesktop()
     
+    /// Wraps `passwordField` and `arrowButton` for animation later
+    @IBOutlet weak var passwordWrapperBox: NSBox!
+    
     /// Text field holding masked input of user password
     @IBOutlet weak var passwordCell: NSSecureTextFieldCell!
     
@@ -88,6 +91,8 @@ class ViewController: NSViewController, NSTextFieldDelegate {
             alert.addButton(withTitle: "Cancel")
             alert.runModal()
             NSApp.terminate(nil)
+        } else {
+            self.passwordWrapperBox.shake()
         }
     }
     
