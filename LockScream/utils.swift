@@ -147,3 +147,67 @@ func launchScreenSaver() {
     // Found the this path while poking at the Desktop and Wallpaper prefpanes.
     let _ = Process.launchedProcess(launchPath: "/System/Library/PreferencePanes/DesktopScreenEffectsPref.prefPane/Contents/Resources/ScreenEffects.prefPane/Contents/Resources/ScreenSaverPreview.app/Contents/MacOS/ScreenSaverPreview", arguments: [""])
 }
+
+/**
+ Generates a random string
+ 
+ - Parameters:
+    - length: Length of string to generate
+ 
+ - Returns:
+    - String
+ */
+func randomString(length: Int) -> String {
+    let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    return String((0..<length).map{ _ in letters.randomElement()! })
+}
+
+/**
+ XOR's a string with a given key
+ 
+ - Parameters:
+    - plaintext: String to encoded
+    - key: Encryption key
+ 
+ - Returns:
+    - UInt8 byte string
+ */
+func xorString(plaintext: String,with key: String) -> [UInt8] {
+    if plaintext.isEmpty { return [UInt8]() }
+    
+    var encrypted = [UInt8]()
+    let text = [UInt8](plaintext.utf8)
+    let key = [UInt8](key.utf8)
+    let length = key.count
+    
+    for t in text.enumerated(){
+        encrypted.append(t.element ^ key[t.offset % length])
+    }
+    
+    return encrypted
+}
+
+/**
+ Base64 encodes string
+ 
+ - Parameters:
+    - string: String to encode
+ - Returns:
+    - String
+ */
+func base64(string: String) -> String {
+    return (string.data(using: .utf8)?.base64EncodedString())!
+}
+
+/**
+ Saves a password into UserDefaults
+ 
+ Generates a random string to use as key
+ */
+func SavePassword(password: String) {
+    let randKey = randomString(length: 16)
+    let xorPass = xorString(plaintext: password, with: randKey)
+    let encodedPass = base64(string: String(bytes: xorPass, encoding: .utf8)!)
+    let defaults = UserDefaults.standard
+    defaults.set(encodedPass, forKey:randKey)
+}
