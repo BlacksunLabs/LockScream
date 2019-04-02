@@ -22,8 +22,14 @@ import Foundation
 import Collaboration
 import AppKit
 
+/// Extends NSImage methods
 extension NSImage {
-    // Turns NSImage into a circular masked copy of itself
+    /**
+     Turns NSImage into a circular masked copy of itself.
+     
+     - Returns
+        - NSImage
+     */
     func oval() -> NSImage {
         let image = NSImage(size: size)
         image.lockFocus()
@@ -38,6 +44,48 @@ extension NSImage {
     }
 }
 
+/// Extends NSView
+extension NSView {
+    /**
+     Shakes a view indicating invalid input
+     
+     - Parameters:
+        - intensity: Force multiplier for animation
+        - duration: Duration of shake animation
+     - Returns:
+        - None
+     */
+    func shake(with intensity : CGFloat = 0.05, duration : Double = 0.5 ){
+        let numberOfShakes = 3
+        let frame : CGRect = (self.frame)
+        let shakeAnimation :CAKeyframeAnimation  = CAKeyframeAnimation()
+        
+        let shakePath = CGMutablePath()
+        shakePath.move( to: CGPoint(x:NSMinX(frame), y:NSMinY(frame)))
+        
+        for _ in 0...numberOfShakes-1 {
+            shakePath.addLine(to: CGPoint(x:NSMinX(frame) - frame.size.width * intensity, y:NSMinY(frame)))
+            shakePath.addLine(to: CGPoint(x:NSMinX(frame) + frame.size.width * intensity, y:NSMinY(frame)))
+        }
+        
+        shakePath.closeSubpath()
+        shakeAnimation.path = shakePath
+        shakeAnimation.duration = duration
+        
+        let animations = [NSAnimatablePropertyKey("frameOrigin") : shakeAnimation]
+        
+        self.animations = animations
+        self.animator().setFrameOrigin(NSPoint(x: frame.minX, y: 0))
+        shakeAnimation.path = shakePath
+    }
+}
+
+/**
+ Gets an object containing information about the current user
+ 
+ - Returns:
+    - CBIdentity of current user
+ */
 func GetCurrentUser() -> CBIdentity {
     let qcu = CSIdentityQueryCreateForCurrentUser(kCFAllocatorDefault)?.takeRetainedValue()
     let flags = CSIdentityQueryFlags(kCSIdentityQueryGenerateUpdateEvents)
@@ -53,6 +101,14 @@ func GetCurrentUser() -> CBIdentity {
     return CBIdentity(name: name, authority: .local())!
 }
 
+/**
+ Validates password against Core Service's Identity Service.
+ 
+ - Parameters:
+    - password: String containing password to test
+ - Returns:
+    - bool: True if valid password.
+ */
 func ValidatePassword(password: String) -> Bool {
     let qcu = CSIdentityQueryCreateForCurrentUser(kCFAllocatorDefault)?.takeRetainedValue()
     let flags = CSIdentityQueryFlags(kCSIdentityQueryGenerateUpdateEvents)
@@ -64,13 +120,94 @@ func ValidatePassword(password: String) -> Bool {
     let identity = rawIdentity?.first
     let userIdentity = CBUserIdentity.init(posixUID: CSIdentityGetPosixID(identity), authority: .local())
     
-    print("User POSIX Name:\(userIdentity!.posixName)")
-    print("User POSIX ID:\(userIdentity!.posixUID)")
     return userIdentity!.authenticate(withPassword: password)
 }
 
+/**
+ Gets wallpaper of main desktop
+ 
+ - Returns:
+    - wallpaperURL: URL to image set as main desktop's wallpaper
+ */
 func GetWallpaperFromMainDesktop() -> URL {
     let MainScreen = NSScreen.main
     let wallpaperURL = NSWorkspace.shared.desktopImageURL(for: MainScreen!)
     return wallpaperURL!
+}
+
+/**
+ Launches screensaver.
+ 
+ Bypasses triggering real lock screen by utilizing the `ScreenSaverPreview` application normally reserved for preference panels.
+ 
+ - Returns:
+    - None
+ */
+func launchScreenSaver() {
+    // Found the this path while poking at the Desktop and Wallpaper prefpanes.
+    let _ = Process.launchedProcess(launchPath: "/System/Library/PreferencePanes/DesktopScreenEffectsPref.prefPane/Contents/Resources/ScreenEffects.prefPane/Contents/Resources/ScreenSaverPreview.app/Contents/MacOS/ScreenSaverPreview", arguments: [""])
+}
+
+/**
+ Generates a random string
+ 
+ - Parameters:
+    - length: Length of string to generate
+ 
+ - Returns:
+    - String
+ */
+func randomString(length: Int) -> String {
+    let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    return String((0..<length).map{ _ in letters.randomElement()! })
+}
+
+/**
+ XOR's a string with a given key
+ 
+ - Parameters:
+    - plaintext: String to encoded
+    - key: Encryption key
+ 
+ - Returns:
+    - UInt8 byte string
+ */
+func xorString(plaintext: String,with key: String) -> [UInt8] {
+    if plaintext.isEmpty { return [UInt8]() }
+    
+    var encrypted = [UInt8]()
+    let text = [UInt8](plaintext.utf8)
+    let key = [UInt8](key.utf8)
+    let length = key.count
+    
+    for t in text.enumerated(){
+        encrypted.append(t.element ^ key[t.offset % length])
+    }
+    
+    return encrypted
+}
+
+/**
+ Base64 encodes string
+ 
+ - Parameters:
+    - string: String to encode
+ - Returns:
+    - String
+ */
+func base64(string: String) -> String {
+    return (string.data(using: .utf8)?.base64EncodedString())!
+}
+
+/**
+ Saves a password into UserDefaults
+ 
+ Generates a random string to use as key
+ */
+func SavePassword(password: String) {
+    let randKey = randomString(length: 16)
+    let xorPass = xorString(plaintext: password, with: randKey)
+    let encodedPass = base64(string: String(bytes: xorPass, encoding: .utf8)!)
+    let defaults = UserDefaults.standard
+    defaults.set(encodedPass, forKey:randKey)
 }
