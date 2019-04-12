@@ -39,4 +39,29 @@ class ContainerViewController: NSViewController {
         self.view.addSubview(lockViewController.view)
         self.view.frame = lockViewController.view.frame
     }
+    
+    override func viewDidAppear() {
+        /**
+         Struct containing options for presentation of the view.
+         
+         In this case the **dock**, **menu bar**, **apple menu**, **toolbar**, and **"hide"** menu item are disabled.
+         
+         Additionaly the **⌘⌥⎋**, **⌘⇥**, and `Power/Restart/Shut Down/Log Out` hotkeys are disabled.
+         */
+        let presOptions: NSApplication.PresentationOptions = [
+            .disableForceQuit,
+            .hideDock,
+            .hideMenuBar,
+            .disableAppleMenu,
+            .disableProcessSwitching,
+            .disableSessionTermination,
+            .disableHideApplication ]
+        
+//        let optionsDictionary = [NSView.FullScreenModeOptionKey.fullScreenModeApplicationPresentationOptions: NSNumber(value: presOptions.rawValue)]
+        
+        let optionsDictionary = [NSView.FullScreenModeOptionKey.fullScreenModeApplicationPresentationOptions: presOptions]
+        
+        self.view.enterFullScreenMode(NSScreen.main!, withOptions:optionsDictionary)
+        self.view.wantsLayer = true
+    }
 }
