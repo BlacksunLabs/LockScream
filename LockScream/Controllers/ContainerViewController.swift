@@ -57,8 +57,6 @@ class ContainerViewController: NSViewController {
             .disableSessionTermination,
             .disableHideApplication ]
         
-//        let optionsDictionary = [NSView.FullScreenModeOptionKey.fullScreenModeApplicationPresentationOptions: NSNumber(value: presOptions.rawValue)]
-        
         let optionsDictionary = [NSView.FullScreenModeOptionKey.fullScreenModeApplicationPresentationOptions: presOptions]
         
         self.view.enterFullScreenMode(NSScreen.main!, withOptions:optionsDictionary)

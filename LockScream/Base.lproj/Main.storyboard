@@ -75,35 +75,6 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--BlankScreen-->
-        <scene sceneID="ES8-sw-jlC">
-            <objects>
-                <viewController title="BlankScreen" storyboardIdentifier="blankScreen" showSeguePresentationStyle="single" id="rW0-yQ-BgG" customClass="BlankScreenController" customModule="LockScream" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" focusRingType="none" id="zap-Mb-oWe">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <box focusRingType="none" fixedFrame="YES" boxType="custom" borderType="none" borderWidth="0.0" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="As1-Bs-Jf5">
-                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <view key="contentView" focusRingType="none" ambiguous="YES" id="yds-fk-qbr">
-                                    <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                                <color key="fillColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            </box>
-                        </subviews>
-                    </view>
-                    <connections>
-                        <outlet property="blankView" destination="yds-fk-qbr" id="04X-mB-jRT"/>
-                        <segue destination="CRn-ay-QQy" kind="show" identifier="blank2Container" id="76p-Ry-AP3"/>
-                        <segue destination="XfG-lQ-9wD" kind="show" identifier="blank2View" id="NfW-uR-geh"/>
-                    </connections>
-                </viewController>
-                <customObject id="zWs-0u-V2M" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1338" y="228"/>
-        </scene>
         <!--Container View Controller-->
         <scene sceneID="GfP-3n-gQ6">
             <objects>
@@ -317,7 +288,4 @@ DQ
         <image name="NSFollowLinkFreestandingTemplate" width="14" height="14"/>
         <image name="NSStopProgressFreestandingTemplate" width="14" height="14"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="boU-Xa-Zri"/>
-    </inferredMetricsTieBreakers>
 </document>

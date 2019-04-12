@@ -13,7 +13,6 @@
 		CE32A766222B29F000D5C393 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE32A764222B29F000D5C393 /* Main.storyboard */; };
 		CE32A76F222B2B0B00D5C393 /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE32A76E222B2B0B00D5C393 /* utils.swift */; };
 		CEAB2E1D222F858C00EBFF7F /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB2E1C222F858C00EBFF7F /* ContainerViewController.swift */; };
-		CEB25881222EB4B600E01929 /* BlankScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB25880222EB4B600E01929 /* BlankScreenController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -38,7 +37,6 @@
 		CE32A768222B29F000D5C393 /* LockScream.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockScream.entitlements; sourceTree = "<group>"; };
 		CE32A76E222B2B0B00D5C393 /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 		CEAB2E1C222F858C00EBFF7F /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
-		CEB25880222EB4B600E01929 /* BlankScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankScreenController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +83,6 @@
 		CEAB2E20223044D800EBFF7F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				CEB25880222EB4B600E01929 /* BlankScreenController.swift */,
 				CE32A760222B29EE00D5C393 /* ViewController.swift */,
 				CEAB2E1C222F858C00EBFF7F /* ContainerViewController.swift */,
 			);
@@ -174,7 +171,6 @@
 				CE32A76F222B2B0B00D5C393 /* utils.swift in Sources */,
 				CE32A761222B29EE00D5C393 /* ViewController.swift in Sources */,
 				CEAB2E1D222F858C00EBFF7F /* ContainerViewController.swift in Sources */,
-				CEB25881222EB4B600E01929 /* BlankScreenController.swift in Sources */,
 				CE32A75F222B29EE00D5C393 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

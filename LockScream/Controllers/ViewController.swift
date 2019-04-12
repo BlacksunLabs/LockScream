@@ -142,11 +142,12 @@ class ViewController: NSViewController, NSTextFieldDelegate {
             .disableSessionTermination,
             .disableHideApplication ]
         
-//        let optionsDictionary = [NSView.FullScreenModeOptionKey.fullScreenModeApplicationPresentationOptions: NSNumber(value: presOptions.rawValue)]
+
         let optionsDictionary = [NSView.FullScreenModeOptionKey.fullScreenModeApplicationPresentationOptions: presOptions]
         
         self.view.enterFullScreenMode(NSScreen.main!, withOptions:optionsDictionary)
         self.view.wantsLayer = true
+        
     self.passwordField.window?.makeFirstResponder(passwordField)
     }
     
