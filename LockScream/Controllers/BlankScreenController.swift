@@ -33,18 +33,20 @@ class BlankScreenController: NSViewController {
         window = self.view.window!
         
         let presOptions: NSApplication.PresentationOptions = [
-            .disableForceQuit ,              // Cmd+Opt+Esc panel is disabled
-            .hideDock ,                         //Dock is entirely unavailable. Spotlight menu is disabled.
-            .hideMenuBar,                       //Menu Bar is Disabled
-            .disableAppleMenu,                  //All Apple menu items are disabled.
-            .disableProcessSwitching,           //Cmd+Tab UI is disabled. All Exposé functionality is also disabled.
-            .disableSessionTermination,         // PowerKey panel and Restart/Shut Down/Log Out are disabled.
-            .disableHideApplication,            // Application "Hide" menu item is disabled.
-            .autoHideToolbar ]  // Toolbar is hidden
+            .disableForceQuit,
+            .hideDock,
+            .hideMenuBar,
+            .disableAppleMenu,
+            .disableProcessSwitching,
+            .disableSessionTermination,
+            .disableHideApplication ]
         
-        let optionsDictionary = [NSView.FullScreenModeOptionKey.fullScreenModeApplicationPresentationOptions: NSNumber(value: presOptions.rawValue)]
+//        let optionsDictionary = [NSView.FullScreenModeOptionKey.fullScreenModeApplicationPresentationOptions: NSNumber(value: presOptions.rawValue)]
+        let optionsDictionary = [NSView.FullScreenModeOptionKey.fullScreenModeApplicationPresentationOptions: presOptions]
         
         self.view.enterFullScreenMode(NSScreen.main!, withOptions:optionsDictionary)
+        
+        self.view.wantsLayer = true
         
         self.view.addTrackingArea(NSTrackingArea(rect: self.view.bounds, options:[.mouseEnteredAndExited, .mouseMoved, .activeInActiveApp], owner: view, userInfo: nil))
     }
