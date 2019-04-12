@@ -10,13 +10,13 @@
         <scene sceneID="JPo-4y-FX3">
             <objects>
                 <application id="hnw-xV-0zn" sceneMemberID="viewController">
-                    <menu key="mainMenu" title="Main Menu" systemMenu="main" showsStateColumn="NO" autoenablesItems="NO" id="AYu-sK-qS6">
+                    <menu key="mainMenu" systemMenu="main" showsStateColumn="NO" autoenablesItems="NO" id="AYu-sK-qS6">
                         <items>
                             <menuItem title="LockScream" hidden="YES" enabled="NO" id="1Xt-HY-uBw">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="LockScream" systemMenu="apple" id="uQy-DD-JDr">
+                                <menu key="submenu" title="LockScream" systemMenu="apple" showsStateColumn="NO" autoenablesItems="NO" id="uQy-DD-JDr">
                                     <items>
-                                        <menuItem title="About LockScream" enabled="NO" id="5kV-Vb-QxS">
+                                        <menuItem hidden="YES" enabled="NO" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
@@ -25,12 +25,12 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Window" hidden="YES" enabled="NO" id="aUF-d1-5bR">
+                            <menuItem hidden="YES" enabled="NO" id="aUF-d1-5bR">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
+                                <menu key="submenu" systemMenu="window" showsStateColumn="NO" autoenablesItems="NO" id="Td7-aD-5lo">
                                     <items>
                                         <menuItem isSeparatorItem="YES" id="eu3-7i-yIM"/>
-                                        <menuItem title="Bring All to Front" enabled="NO" id="LE2-aR-0XJ">
+                                        <menuItem hidden="YES" enabled="NO" id="LE2-aR-0XJ">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="arrangeInFront:" target="Ady-hI-5gd" id="DRN-fu-gQh"/>
@@ -55,9 +55,9 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" fullSizeContentView="YES"/>
-                        <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" visibleAtLaunch="NO" animationBehavior="default" tabbingMode="disallowed" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA">
+                        <windowStyleMask key="styleMask" titled="YES" resizable="YES" fullSizeContentView="YES"/>
+                        <windowCollectionBehavior key="collectionBehavior" ignoresCycle="YES" fullScreenDisallowsTiling="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES"/>
                         <rect key="contentRect" x="624" y="212" width="1080" height="724"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
@@ -318,6 +318,6 @@ DQ
         <image name="NSStopProgressFreestandingTemplate" width="14" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="76p-Ry-AP3"/>
+        <segue reference="boU-Xa-Zri"/>
     </inferredMetricsTieBreakers>
 </document>
