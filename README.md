@@ -5,8 +5,33 @@ macOS Client-Side Phishing lock screen payload.
 
 Emulates the macOS lock screen by dynamically determining a user's wallpaper, username, and user icon. Makes use of Core Services and Collaboration Services to verify entered credentials before allowing the program to close.
 
-[[ TODO : Write a better Readme ]] 
-
+## Features
+- **Credentials are XOR encrypted and stored as a base64 encoded stringusing User Defaults**
+  - Operators are free to push LockScream to remote implants and retrieve credentials at a later time
+- **Fullscreen Kiosk mode**
+  - Menu bar hidden
+  - Dock hidden
+  - Cmd+Tab disabled
+  - Force Quit (Option + Cmd + Esc) disabled
+  - All Apple System menus disabled
+  - Expose/Mission Control disabled
+  - Cannot switch Spaces
+  - Power button disabled 
+    - Note that hardbooting the machine by holding the power button until the machine shuts down still works
+- **Credential Validation**
+  - LockScream will not close until correct credentials are provided
+- **Lock Screen impersonation**
+  - Password input box "shakes" side to side if given incorrect credentials
+  - Clicking the "Cancel" button invokes false screensaver
+  - Pressing escape key invokes false screensaver
+  - Keyboard input automatically focuses password box
+  - Keyboard input automatically adds "arrow-in-circle" icon next to password box
+  - User's wallpaper determined programatically and blurred when LockScream is invoked
+- **False Screensaver**
+  - Leverages the same functionality as System Preferences to call users's set Screensaver in "test" mode
+  - Does not cause the real lock screen to trigger when exiting screensaver
+  - Moving the cursor during false screensaver will cause it to close and bring back LockScream
+  
 ## Where are the creds ?!
 At the moment LockScream uses `User Defaults` to store credentials entered by the user.  
 When compiling LockScream the bundle identifier can be changed from `com.blacksun.research.labs.LockScream` to any bundle identifier desired. The bundle identifier should be noted as it is important for retrieving user credentials later. 
