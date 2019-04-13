@@ -1,4 +1,5 @@
-![](https://gist.github.com/n0ncetonic/bf506d5f6c979c9445095f30de6d618f/raw/915629750edb584884025ea846c9b4a32653c636/LockScream_512.png)
+<img align="center" src="https://gist.github.com/n0ncetonic/bf506d5f6c979c9445095f30de6d618f/raw/915629750edb584884025ea846c9b4a32653c636/LockScream_512.png">
+
 # LockScream
 macOS Client-Side Phishing lock screen payload.
 
