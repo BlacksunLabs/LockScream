@@ -1,7 +1,7 @@
 <p align="center" ><img src="https://gist.github.com/n0ncetonic/bf506d5f6c979c9445095f30de6d618f/raw/915629750edb584884025ea846c9b4a32653c636/LockScream_512.png"></p>
+<h1 align="center">LockScream</h1>
 
-# LockScream
-macOS Client-Side Phishing lock screen payload.
+*macOS Client-Side Phishing lock screen payload.*
 
 Emulates the macOS lock screen by dynamically determining a user's wallpaper, username, and user icon. Makes use of Core Services and Collaboration Services to verify entered credentials before allowing the program to close.
 
