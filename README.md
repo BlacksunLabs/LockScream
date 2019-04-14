@@ -6,8 +6,9 @@
 Emulates the macOS lock screen by dynamically determining a user's wallpaper, username, and user icon. Makes use of Core Services and Collaboration Services to verify entered credentials before allowing the program to close.
 
 ## Features
-- **Credentials are XOR encrypted and stored as a base64 encoded stringusing User Defaults**
+- **Credentials are XOR encrypted and stored as a base64 encoded string using User Defaults**
   - Operators are free to push LockScream to remote implants and retrieve credentials at a later time
+  - Details on retrieving credentials below
 - **Fullscreen Kiosk mode**
   - Menu bar hidden
   - Dock hidden
@@ -33,10 +34,13 @@ Emulates the macOS lock screen by dynamically determining a user's wallpaper, us
   - Moving the cursor during false screensaver will cause it to close and bring back LockScream
   
 ## Where are the creds ?!
-At the moment LockScream uses `User Defaults` to store credentials entered by the user.  
-When compiling LockScream the bundle identifier can be changed from `com.blacksun.research.labs.LockScream` to any bundle identifier desired. The bundle identifier should be noted as it is important for retrieving user credentials later. 
 
-For the sake of example, the default value of `com.blacksun.research.labs.LockScream` will be used and commands should be modified appropriately should you use a different bundle identifier.
+LockScream uses `User Defaults` to store credentials which takes advantage of LockScream's bundle identifier. 
+When compiling LockScream the bundle identifier may be changed from `com.blacksun.research.labs.LockScream` to any value desired. Make note of the bundle identifier if you have change it from the default value, you'll need it.  
+
+> The following examples assume the bundle identifier is set to `com.blacksun.research.labs.LockScream`
+
+### Getting the encrypted credential
 
 ```
 $ defaults read com.blacksun.research.labs.LockScream
